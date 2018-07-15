@@ -40,12 +40,12 @@ $app->route(['POST', 'OPTIONS'], '/login', function(Request $request, Response $
 		$conn = new \PDO("mysql:host={$container['settings']['db']['host']};dbname={$container['settings']['db']['database']}", $container['settings']['db']['user'], $container['settings']['db']['pass']);
 		$stmt = $conn->prepare('SELECT id, password FROM user WHERE email = ?');
 		$stmt->execute([$postBody['email']]);
+		$user = $stmt->fetch(\PDO::FETCH_ASSOC);
 		// not found by that email address
-		if (count($stmt) != 1) {
+		if (!$user) {
 			return $response->withStatus(404)->withJson(['returnCode' => 2, 'error' => 'User Not Found.'])->output();
 		}
 		// verify the password match the database hash
-		$user = $stmt->fetch(\PDO::FETCH_ASSOC);
 		if (!password_verify($postBody['password'], $user['password'])) {
 			return $response->withStatus(401)->withJson(['returnCode' => 3, 'error' => 'Invalid Credentials.'])->output();
 		}

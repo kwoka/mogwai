@@ -15,7 +15,7 @@ class Router
 	 * @var array
 	 */
 	protected static $supportedMethods = [
-		'OPTIONS', 'HEAD', 'POST', 'GET', 'PUT', 'DELETE', 'PATHCH'
+		'OPTIONS', 'HEAD', 'POST', 'GET', 'PUT', 'DELETE', 'PATCH'
 	];
 
 	/**

@@ -47,7 +47,7 @@ $app->route(['POST', 'OPTIONS'], '/login', function(Request $request, Response $
 		// verify the password match the database hash
 		$user = $stmt->fetch(\PDO::FETCH_ASSOC);
 		if (!password_verify($postBody['password'], $user['password'])) {
-			return $response->withStatus(400)->withJson(['returnCode' => 3, 'error' => 'Invalid Credentials.'])->output();
+			return $response->withStatus(401)->withJson(['returnCode' => 3, 'error' => 'Invalid Credentials.'])->output();
 		}
 		// success!
 		return $response->withJson(['returnCode' => 0, 'userId' => $user['id']])->output();

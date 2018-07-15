@@ -1,0 +1,17 @@
+{
+    "name": "tbreese/lesson-one",
+    "description": "Login API",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Tom Breese",
+            "email": "thomasjbreese@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}

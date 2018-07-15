@@ -1,0 +1,12 @@
+<?php
+/**
+ * Application settings.
+ */
+return [
+	'db' => [
+		'host' => 'localhost',
+		'user' => 'username',
+		'pass' => 'password',
+		'database' => 'database_name'
+	]
+];
